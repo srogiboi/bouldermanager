@@ -18,7 +18,13 @@ import org.srogiboi.app.bouldermanager.boulders.BoulderManager;
  *
  */
 @Path("boulderlist")
-public class BoulderExporter extends BoulderManager {
+public class BoulderExporter {
+
+	private BoulderManager bouldermanager;
+
+	public BoulderExporter() {
+		this.bouldermanager = new BoulderManager();
+	}
 
 	/**
 	 * Method handling HTTP GET requests. The returned object will be sent to
@@ -29,8 +35,8 @@ public class BoulderExporter extends BoulderManager {
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Boulder> getAllBoulder() {
-		loadBoulders();
-		return getBoulderList();
+		this.bouldermanager.loadBoulders();
+		return this.bouldermanager.getBoulderList();
 	}
 
 	/**
@@ -41,18 +47,17 @@ public class BoulderExporter extends BoulderManager {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public void addBoulder(Boulder boulder) {
-		addBoulderToDatabase(boulder);
+		this.bouldermanager.addBoulderToDatabase(boulder);
 	}
 
-	
 	/**
- 	 * @return JSON with a  single instance of boulder loaded form DB.
+	 * @return JSON with a single instance of boulder loaded form DB.
 	 */
 	@GET
 	@Path("/{boulderId}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Boulder getSingleBoulder(@PathParam("boulderId") int testId) {
-		loadBoulders();
-		return getBoulderById(testId);
+		this.bouldermanager.loadBoulders();
+		return this.bouldermanager.getBoulderById(testId);
 	}
 }
