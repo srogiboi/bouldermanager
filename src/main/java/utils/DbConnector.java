@@ -23,7 +23,7 @@ public static Connection connectionToDataBase(){
 	
 	try {
 		connection = DriverManager.getConnection(
-				"jdbc:postgresql://127.0.0.1:5432/bouldermanager", "postgres",
+				"jdbc:postgresql://127.0.0.1:5435/bouldermanager", "postgres",
 				"kalandraka2");
 
 	} catch (SQLException e) {
