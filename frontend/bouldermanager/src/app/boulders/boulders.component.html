@@ -1,7 +1,94 @@
- <div *ngFor="let boulder of boulders">
-   {{boulder.id}}
-   {{boulder.description}}
-   {{boulder.grade}}
-   {{boulder.sectorId}}
-   {{boulder.authorId}}
- </div>
+<div>
+  
+<p>
+  <label>Search query:  </label>
+</p>
+
+  <div class="searchLabel">
+    <label>Author last name:  </label>
+  </div>
+  <select [(ngModel)]="queryAuthor" (change)=$event.target.value id="center-well">
+    <option value="" disabled selected >Select your option</option>
+    <option value="Digi">DiGi</option>
+    <option value="Oleksik">Oleksik</option>
+    <option value="Mraziak">Mraziak</option>
+    <option value="Pustelka">Pustelka</option>
+    <option value="Wszotek">Wszotek</option>
+  </select>
+  <button (click)="clearSearch('author')" class="btn btn-outline-danger">Clear</button>
+  <div style="clear:both"> </div>
+
+  <div class="searchLabel">
+    <label>Grade:</label>
+  </div>
+  <select [(ngModel)]="queryGrade" (change)=$event.target.value id="center-well">
+    <option value="" disabled selected >Select your option</option>
+    <option value="pink">pink</option>
+    <option value="yellow">yellow</option>
+    <option value="blue">blue</option>
+    <option value="red">red</option>
+    <option value="black">black</option>
+  </select>
+  <button (click)="clearSearch('grade')" class="btn btn-outline-danger">Clear</button>
+  <div style="clear:both"> </div>
+
+  <div class="searchLabel">
+    <label>Sector name:  </label>
+  </div>
+  <div>
+    <select [(ngModel)]="querySector" (change)=$event.target.value id="center-well">
+    <option value="" disabled selected >Select your option</option>
+    <option value="big wall">big wall</option>
+    <option value="broken roof">broken roof</option>
+    <option value="elephant">elephant</option>
+    <option value="masive">masive</option>
+    <option value="small moon">small moo</option>
+    <option value="wave">wave</option>
+  </select>
+    <button (click)="clearSearch('sector')" class="btn btn-outline-danger">Clear</button>
+  </div>
+  <div style="clear:both"> </div>
+  <div id = "afterSearch"> </div>
+
+  <button type="submit" (click)="search(queryAuthor,queryGrade,querySector)" class="btn btn-primary">Submit</button>
+  <button type="submit" (click)="clearAll()" class="btn btn-outline-danger">Clear All</button>
+
+  <hr style="border-top: dotted 1px;" />
+
+<div class="searchLabel">
+  <label>Select column for sorting:  </label>
+  </div>
+  <select (change)="sort($event.target.value)" name="options" id="center-well">
+    <option value="" disabled selected>Select your option</option>
+    <option value="id">id</option>
+    <option value="author_name">author_name</option>
+    <option value="author_last_name">author_last_name</option>
+    <option value="grade">grade</option>
+    <option value="sector_name">sector_name</option>
+  </select>
+
+  <p><br></p>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>AUTHOR NAME</th>
+        <th>AUTHOR LAST NAME</th>
+        <th>GRADE</th>
+        <th>SECTOR NAME</th>
+        <th>DESCRIPTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let boulder of boulders ">
+        <th>{{boulder.id}}</th>
+        <th>{{boulder.authorFirstName}}</th>
+        <th>{{boulder.authorLastName}}</th>
+        <th>{{boulder.grade}}</th>
+        <th>{{boulder.sectorName}}</th>
+        <th>{{boulder.description}}</th>
+
+      </tr>
+    </tbody>
+  </table>
+</div>

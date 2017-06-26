@@ -8,6 +8,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import org.srogiboi.app.bouldermanager.boulders.Boulder;
@@ -18,11 +19,11 @@ import org.srogiboi.app.bouldermanager.boulders.BoulderManager;
  *
  */
 @Path("boulderlist")
-public class BoulderExporter {
+public class BoulderRestService {
 
 	private BoulderManager bouldermanager;
 
-	public BoulderExporter() {
+	public BoulderRestService() {
 		this.bouldermanager = new BoulderManager();
 	}
 
@@ -60,4 +61,18 @@ public class BoulderExporter {
 		this.bouldermanager.loadBoulders();
 		return this.bouldermanager.getBoulderById(testId);
 	}
+	
+	/**
+	 * @return JSON with a single instance of boulder loaded form DB.
+	 */
+	@GET
+	@Path("/query")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<Boulder> getSearchBoulders(@QueryParam("author") String author,
+			@QueryParam("grade") String grade,
+			@QueryParam("sector") String sector) {
+		
+		this.bouldermanager.searchboulders(author,grade,sector);
+		return this.bouldermanager.getBoulderList();
+	}																	
 }

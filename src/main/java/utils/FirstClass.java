@@ -13,14 +13,15 @@ public class FirstClass {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
  
-		AuthorsManager authors = new AuthorsManager();
-		authors.loadAuthorsFromDb(); 
+//		AuthorsManager authors = new AuthorsManager();
+//		authors.loadAuthorsFromDb(); 
 		
+		System.out.println("BOULDERS: ");
 		BoulderManager boulders = new BoulderManager();
-		boulders.loadBoulders();
-		
-		AscentManager ascents = new AscentManager();
-		ascents.loadAscents();
+		//boulders.loadBoulders();
+		boulders.searchboulders("Pustelka", "red", "");
+//		AscentManager ascents = new AscentManager();
+//		ascents.loadAscents();
 		
 		//to do sectors
 		//to do users

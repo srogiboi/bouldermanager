@@ -5,8 +5,11 @@ public class Boulder {
 
 	private int id;
 	private int authorId;
+	private String authorFirstName;
+	private String authorLastName;
 	private String grade;
 	private int sectorId;
+	private String sectorName;
 	private String description;
 
 	public int getId() {
@@ -24,6 +27,22 @@ public class Boulder {
 	public void setAuthorId(int authorId) {
 		this.authorId = authorId;
 	}
+	public String getAuthorFirstName() {
+		return authorFirstName;
+	}
+
+	public void setAuthorFirstName(String authorFirstName) {
+		this.authorFirstName = authorFirstName;
+	}
+
+	public String getAuthorLastName() {
+		return authorLastName;
+	}
+
+	public void setAuthorLastName(String authorLastName) {
+		this.authorLastName = authorLastName;
+	}
+
 
 	public String getGrade() {
 		return grade;
@@ -47,6 +66,14 @@ public class Boulder {
 
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	public String getSectorName() {
+		return sectorName;
+	}
+
+	public void setSectorName(String sectorName) {
+		this.sectorName = sectorName;
 	}
 
 }
